@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "noImplicitAny": false,
+    "paths": {
+      "@app/*": ["./*"],
+      "@features/*": ["features/*"],
+      "@slices/*": ["store/slices/*"],
+      "@store": ["store"],
+      "@common": ["common"],
+      "@themes/*": ["themes/*"],
+      "@themes": ["themes"],
+      "@utils": ["utils"],
+      "@utils/*": ["utils/*"],
+      "@containers/*": ["containers/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.js",
+    "global.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "commitlint.config.js"
+  ],
+  "exclude": ["node_modules", "**/*.stories.tsx"]
+}
