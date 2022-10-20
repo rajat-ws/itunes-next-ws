@@ -2,6 +2,7 @@ import { injectIntl, IntlShape } from "react-intl";
 import styled from "styled-components";
 import { Input, Card } from "antd";
 import { T } from "@app/common/T";
+import { colors } from "@app/themes";
 
 export interface SearchBoxProps {
   intl: IntlShape;
@@ -17,7 +18,7 @@ const SearchBoxContainer = styled.div`
     margin: 0 auto;
 
     .ant-card {
-      border: 1px solid #3c4048;
+      border: 1px solid ${colors.primary};
     }
   }
 `;

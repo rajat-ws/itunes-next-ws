@@ -5,7 +5,7 @@
  * That allows to change them more easily later on.
  */
 
-const primary = "#26547C";
+const primary = "#3c4048";
 const text = "#69353F";
 const textSecondary = "#f2f2f2";
 const secondary = "#EFF8E2";

@@ -1,3 +1,4 @@
+import { colors } from "@app/themes";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 
@@ -7,7 +8,7 @@ const HeaderContainer = styled.div`
     justify-content: center;
     width: 50%;
     margin: 0 auto;
-    background: #3c4048;
+    background: ${colors.primary};
   }
 `;
 
