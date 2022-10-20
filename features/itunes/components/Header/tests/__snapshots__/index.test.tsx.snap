@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Header /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="Header__HeaderContainer-sc-12p05nx-0 cMXrEl"
+    >
+      <span
+        class="Header__HeaderTitle-sc-12p05nx-1 eeGxed"
+      >
+         Itunes Store 
+      </span>
+    </div>
+  </div>
+</body>
+`;
