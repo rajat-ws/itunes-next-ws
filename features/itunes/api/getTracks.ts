@@ -2,16 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { HYDRATE } from "next-redux-wrapper";
 
 export interface TrackItem {
-  kind: string;
-  primaryGenreName: string;
   collectionName: string;
   artistName: string;
   trackName: string;
   trackId: number;
-  trackTimeMillis: number;
   artworkUrl100: string;
-  previewUrl: string;
-  collectionId: string;
 }
 
 export type TrackResponse = {

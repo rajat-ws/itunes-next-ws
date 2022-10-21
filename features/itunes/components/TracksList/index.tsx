@@ -22,13 +22,13 @@ const TracksListWrapper = styled.div`
 
 const TracksList: React.FC<TrackListProps> = props => {
   const { tracksData, loading } = props;
-  const trackResults: TrackItem[] = get(tracksData, "results", []);
+  const results: TrackItem[] = get(tracksData, "results", []);
 
   return (
     <TracksListWrapper>
-      <If condition={trackResults.length !== 0}>
+      <If condition={results.length !== 0}>
         <Skeleton loading={loading} active>
-          {trackResults.map((item, index: number) => {
+          {results.map((item: TrackItem, index: number) => {
             return <TrackCard key={index} data={item} />;
           })}
         </Skeleton>

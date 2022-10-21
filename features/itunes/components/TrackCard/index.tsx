@@ -51,7 +51,6 @@ const TrackCard: React.FC<TrackCardProps> = ({ data }) => {
             <StyledSpan> Artist name: </StyledSpan> {artistName}
           </Paragraph>
         </If>
-
         <If
           condition={!isEmpty(collectionName)}
           otherwise={<Paragraph>No collection name available</Paragraph>}

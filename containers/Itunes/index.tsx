@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Spin, message } from "antd";
 import { debounce } from "lodash";
 import styled from "styled-components";
 import { Header, SearchBox, TracksList } from "@app/features/itunes/components";
@@ -31,8 +32,8 @@ export const TracksContainer = () => {
       <Container>
         <Header />
         <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
-        {error && <h1> Something went wrong </h1>}
-        {isFetching && <h1> Data is getting fetched, please wait... </h1>}
+        {error && message.error("There's an error while fetching the tracks...")}
+        {isFetching && <Spin />}
         {isSuccess && <TracksList loading={isLoading} tracksData={data} />}
       </Container>
     </>
