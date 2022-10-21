@@ -6,6 +6,7 @@ import { colors } from "@app/themes";
 
 export interface SearchBoxProps {
   intl: IntlShape;
+  debouncedHandleOnChange: (e: string) => void;
 }
 
 const { Search } = Input;
@@ -30,12 +31,18 @@ const TitleCard = styled(Card)`
   }
 `;
 
-const SearchBox = ({ intl }: SearchBoxProps) => {
+const SearchBox = ({ intl, debouncedHandleOnChange }: SearchBoxProps) => {
   return (
     <SearchBoxContainer data-testid="search-box">
       <TitleCard title={intl.formatMessage({ id: "itunes_title" })}>
         <T id="track_search_default" />
-        <Search type="text" data-testid="search-bar" placeholder="Baarishein by Anuv Jain...." />
+        <Search
+          onChange={e => debouncedHandleOnChange(e.target.value)}
+          onSearch={searchValue => debouncedHandleOnChange(searchValue)}
+          type="text"
+          data-testid="search-bar"
+          placeholder="Baarishein by Anuv Jain...."
+        />
       </TitleCard>
     </SearchBoxContainer>
   );

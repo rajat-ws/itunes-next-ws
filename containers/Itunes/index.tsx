@@ -1,5 +1,9 @@
 import styled from "styled-components";
+
 import { Header, SearchBox } from "@app/features/itunes/components";
+import { useState } from "react";
+import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
+import { debounce } from "lodash";
 
 const Container = styled.div`
   && {
@@ -14,10 +18,19 @@ const Container = styled.div`
 `;
 
 export const TracksContainer = () => {
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const { data } = useFetchTracksQuery(searchTerm, { skip: !searchTerm });
+
+  const handleOnChange = trackName => setSearchTerm(trackName);
+
+  const debouncedHandleOnChange = debounce(handleOnChange, 200);
+
+  // console.log("data", data);
+
   return (
     <Container>
       <Header />
-      <SearchBox />
+      <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
     </Container>
   );
 };
