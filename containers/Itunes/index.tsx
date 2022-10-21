@@ -1,9 +1,8 @@
-import styled from "styled-components";
-
-import { Header, SearchBox, TracksList } from "@app/features/itunes/components";
 import { useState } from "react";
-import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
 import { debounce } from "lodash";
+import styled from "styled-components";
+import { Header, SearchBox, TracksList } from "@app/features/itunes/components";
+import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
 
 const Container = styled.div`
   && {

@@ -1,8 +1,8 @@
-import { get } from "lodash";
-import styled from "styled-components";
 import { Skeleton } from "antd";
-import { TrackItem, TrackResponse } from "../../api/getTracks";
+import styled from "styled-components";
+import { get } from "lodash";
 import { If } from "@app/common";
+import { TrackItem, TrackResponse } from "../../api/getTracks";
 import TrackCard from "../TrackCard";
 
 interface TrackListProps {

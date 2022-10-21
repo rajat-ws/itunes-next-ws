@@ -1,9 +1,9 @@
+import { isEmpty } from "lodash";
 import styled from "styled-components";
 import { Card, Image, Typography } from "antd";
-import { TrackItem } from "../../api/getTracks";
 import { colors, fonts } from "@app/themes";
 import { If } from "@app/common";
-import { isEmpty } from "lodash";
+import { TrackItem } from "../../api/getTracks";
 
 const { Paragraph } = Typography;
 
@@ -23,7 +23,7 @@ const TrackCardWrapper = styled(Card)`
 const StyledDescription = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 1.2rem;
+  ${fonts.size.big}
   padding-top: 1rem;
 `;
 
