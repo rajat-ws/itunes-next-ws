@@ -20,11 +20,8 @@ const Container = styled.div`
 export const TracksContainer = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { data } = useFetchTracksQuery(searchTerm, { skip: !searchTerm });
-  console.log(data);
 
-  const handleOnChange = trackName => {
-    setSearchTerm(trackName);
-  };
+  const handleOnChange = trackName => setSearchTerm(trackName);
 
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
