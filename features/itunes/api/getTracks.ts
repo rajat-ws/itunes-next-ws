@@ -16,7 +16,13 @@ export type TrackResponse = {
 
 export const itunesApi = createApi({
   reducerPath: "itunesApi",
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_ITUNES_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_ITUNES_URL,
+    prepareHeaders: headers => {
+      headers.get("Access-Control-Allow-Origin");
+      return headers;
+    },
+  }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath];

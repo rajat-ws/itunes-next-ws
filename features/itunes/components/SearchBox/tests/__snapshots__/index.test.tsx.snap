@@ -41,7 +41,7 @@ exports[`<SearchBox /> should render and match the snapshot 1`] = `
               <input
                 class="ant-input"
                 data-testid="search-bar"
-                placeholder="Baarishein by Anuv Jain...."
+                placeholder="Baarishein by Anuv Jain..."
                 type="text"
                 value=""
               />
