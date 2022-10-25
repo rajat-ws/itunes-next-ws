@@ -13,7 +13,7 @@ describe("<TrackCard />", () => {
     },
   };
 
-  it("should render and match the snapsho t", () => {
+  it("should render and match the snapshot", () => {
     const { baseElement } = render(<TrackCard {...trackCardProps} />);
     expect(baseElement).toMatchSnapshot();
   });

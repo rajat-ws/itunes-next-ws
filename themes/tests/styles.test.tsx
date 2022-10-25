@@ -184,6 +184,14 @@ describe("Tests for styles", () => {
     expect(styles.height()).toEqual(expectedResult);
   });
 
+  it("should return default viewHeight stylings", () => {
+    const value = 0;
+    expectedResult = css`
+      height: ${value}vh;
+    `;
+    expect(styles.viewHeight(value)).toEqual(expectedResult);
+  });
+
   it("should return default marginTop stylings", () => {
     const marginTop = 0;
     expectedResult = css`

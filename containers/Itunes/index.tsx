@@ -1,10 +1,13 @@
-import { useState } from "react";
-import { Spin } from "antd";
+import React, { useState } from "react";
+import { Spin, Divider } from "antd";
 import { debounce } from "lodash";
 import styled from "styled-components";
 import ErrorState from "@app/features/itunes/components/ErrorState";
-import { Header, SearchBox, TracksList } from "@app/features/itunes/components";
+import { Header, SearchBox, TracksList, YouAreAwesome } from "@app/features/itunes/components";
 import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
+import Recommended, { Recommendation } from "@app/features/itunes/components/Recommended";
+import { colors, fonts } from "@app/themes";
+import { T } from "@app/common/T";
 
 interface ITunesError {
   status: number;
@@ -19,6 +22,10 @@ interface ITunesError {
   };
 }
 
+interface ItunesContainerProps {
+  recommendations: Recommendation[];
+}
+
 const Container = styled.div`
   && {
     display: flex;
@@ -31,7 +38,17 @@ const Container = styled.div`
   }
 `;
 
-export const TracksContainer = () => {
+const StyledRecommnendationWrapper = styled.div`
+  && {
+    width: 50%;
+    padding: 1rem 0;
+    background: ${colors.gotoStories};
+    color: ${colors.textSecondary};
+    margin: 0 auto;
+  }
+`;
+
+export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendations }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(searchTerm, {
     skip: !searchTerm,
@@ -39,11 +56,19 @@ export const TracksContainer = () => {
 
   const handleOnChange = trackName => setSearchTerm(trackName);
 
-  const debouncedHandleOnChange = debounce(handleOnChange, 200);
+  const debouncedHandleOnChange = debounce(handleOnChange, 500);
 
   return (
     <>
       <Container>
+        <StyledRecommnendationWrapper>
+          <T id="recommended" styles={fonts.style.subheading()} />
+          <Recommended recommendations={recommendations} />
+          <YouAreAwesome href="https://www.iamawesome.com/">
+            <T id="you_are_awesome" />
+          </YouAreAwesome>
+        </StyledRecommnendationWrapper>
+        <Divider />
         <Header />
         <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
         <Spin spinning={isFetching} />
