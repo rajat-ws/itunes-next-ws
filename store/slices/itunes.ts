@@ -17,13 +17,13 @@ export const itunesSlice = createSlice({
   name: "itunesApi",
   initialState,
   reducers: {
-    successGetSongs: (state: SongState, action: PayloadAction<TrackItem[]>) => {
+    successGetTracks: (state: SongState, action: PayloadAction<TrackItem[]>) => {
       state.tracks = action.payload;
-      state.tracksCount = 0;
+      state.tracksCount = action.payload.length;
     },
   },
 });
 
-export const { successGetSongs } = itunesSlice.actions;
+export const { successGetTracks } = itunesSlice.actions;
 
 export default itunesSlice.reducer;
