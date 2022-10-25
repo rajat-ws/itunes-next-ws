@@ -1,9 +1,23 @@
-import styled from "styled-components";
-
-import { Header, SearchBox } from "@app/features/itunes/components";
 import { useState } from "react";
-import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
+import { Spin } from "antd";
 import { debounce } from "lodash";
+import styled from "styled-components";
+import ErrorState from "@app/features/itunes/components/ErrorState";
+import { Header, SearchBox, TracksList } from "@app/features/itunes/components";
+import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
+
+interface ITunesError {
+  status: number;
+  data: {
+    message: string;
+    documentionUrl: string;
+    errors: {
+      code: string;
+      field: string;
+      resource: string;
+    }[];
+  };
+}
 
 const Container = styled.div`
   && {
@@ -19,19 +33,28 @@ const Container = styled.div`
 
 export const TracksContainer = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { data } = useFetchTracksQuery(searchTerm, { skip: !searchTerm });
+  const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(searchTerm, {
+    skip: !searchTerm,
+  });
 
   const handleOnChange = trackName => setSearchTerm(trackName);
 
   const debouncedHandleOnChange = debounce(handleOnChange, 200);
 
-  // console.log("data", data);
-
   return (
-    <Container>
-      <Header />
-      <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
-    </Container>
+    <>
+      <Container>
+        <Header />
+        <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
+        <Spin spinning={isFetching} />
+        {isSuccess && <TracksList loading={isLoading} tracksData={data} />}
+        <ErrorState
+          tracksData={data}
+          loading={isLoading && isFetching}
+          tracksError={(error as ITunesError)?.data?.message}
+        />
+      </Container>
+    </>
   );
 };
 

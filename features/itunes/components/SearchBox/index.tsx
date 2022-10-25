@@ -41,7 +41,7 @@ const SearchBox = ({ intl, debouncedHandleOnChange }: SearchBoxProps) => {
           onSearch={searchValue => debouncedHandleOnChange(searchValue)}
           type="text"
           data-testid="search-bar"
-          placeholder="Baarishein by Anuv Jain...."
+          placeholder={intl.formatMessage({ id: "search_placeholder" })}
         />
       </TitleCard>
     </SearchBoxContainer>
