@@ -1,9 +1,17 @@
-import { Space, Spin } from "antd";
 import React from "react";
-import { AlignCenter } from "../styled";
+import styled from "styled-components";
+import { Space, Spin } from "antd";
+import { styles } from "@app/themes";
+
+const AlignCenter = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ${styles.viewHeight(100)}
+`;
 
 const Loader: React.FC = () => (
-  <AlignCenter>
+  <AlignCenter data-testid="align-center">
     <Space size="middle">
       <Spin size="large" />
     </Space>

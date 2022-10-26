@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loader /> should render and match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="Loader__AlignCenter-sc-1fl5bd6-0 gLYoBj"
+      data-testid="align-center"
+    >
+      <div
+        class="ant-space ant-space-horizontal ant-space-align-center"
+      >
+        <div
+          class="ant-space-item"
+        >
+          <div
+            aria-busy="true"
+            aria-live="polite"
+            class="ant-spin ant-spin-lg ant-spin-spinning"
+          >
+            <span
+              class="ant-spin-dot ant-spin-dot-spin"
+            >
+              <i
+                class="ant-spin-dot-item"
+              />
+              <i
+                class="ant-spin-dot-item"
+              />
+              <i
+                class="ant-spin-dot-item"
+              />
+              <i
+                class="ant-spin-dot-item"
+              />
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+`;

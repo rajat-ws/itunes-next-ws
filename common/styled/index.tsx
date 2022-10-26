@@ -33,10 +33,3 @@ export const ClickableTags = styled(Tag)`
     border: 1px solid ${colors.primary};
   }
 `;
-
-export const AlignCenter = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ${styles.viewHeight(100)}
-`;
