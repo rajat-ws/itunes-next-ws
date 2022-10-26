@@ -7,6 +7,9 @@ describe("fonts", () => {
     expect(fonts.size.small()).toEqual(
       expect.arrayContaining([expect.stringContaining("font-size:0.875rem")])
     );
+    expect(fonts.size.xRegular()).toEqual(
+      expect.arrayContaining([expect.stringContaining("font-size:1.125rem;")])
+    );
     expect(fonts.size.regular()).toEqual(
       expect.arrayContaining([expect.stringContaining("font-size:1rem;")])
     );

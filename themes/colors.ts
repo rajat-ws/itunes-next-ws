@@ -7,11 +7,12 @@
 
 const primary = "#3c4048";
 const text = "#69353F";
+const primaryLink = "#1D1CE5";
 const textSecondary = "#f2f2f2";
 const secondary = "#EFF8E2";
 const success = "#70A9A1";
 const error = "#ED474A";
-const gotoStories = "#2E6171";
+const gotoStories = "#3C4048";
 
 const colors = {
   transparent: "rgba(0,0,0,0)",
@@ -20,6 +21,7 @@ const colors = {
   textSecondary,
   primary,
   secondary,
+  primaryLink,
   success,
   error,
   gotoStories,
