@@ -1,5 +1,3 @@
-// import { HYDRATE } from "next-redux-wrapper";
-// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { itunesApiService } from "@app/utils/apiUtils";
 import { convertObjectToCamelCase } from "@utils";
 
