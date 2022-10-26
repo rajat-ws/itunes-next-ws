@@ -1,5 +1,7 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { HYDRATE } from "next-redux-wrapper";
+// import { HYDRATE } from "next-redux-wrapper";
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { itunesApiService } from "@app/utils/apiUtils";
+import { convertObjectToCamelCase } from "@utils";
 
 export interface TrackItem {
   collectionName: string;
@@ -14,25 +16,20 @@ export type TrackResponse = {
   results: TrackItem[];
 };
 
-export const itunesApi = createApi({
-  reducerPath: "itunesApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: process.env.NEXT_PUBLIC_ITUNES_URL,
-    prepareHeaders: headers => {
-      headers.get("Access-Control-Allow-Origin");
-      return headers;
-    },
-  }),
-  extractRehydrationInfo(action, { reducerPath }) {
-    if (action.type === HYDRATE) {
-      return action.payload[reducerPath];
-    }
-  },
+type Params = {
+  searchTerm: string;
+};
+
+export const itunesApi = itunesApiService.injectEndpoints({
   endpoints: builder => ({
-    fetchTracks: builder.query<TrackResponse, string>({
-      query: name => `search?term=${name}`,
+    fetchTracks: builder.query<TrackResponse, object>({
+      query: (params: Params) => `search?term=${params.searchTerm}`,
+      transformResponse: (response: TrackResponse) => {
+        return convertObjectToCamelCase<TrackResponse>(response);
+      },
     }),
   }),
+  overrideExisting: true,
 });
 
 export const { useFetchTracksQuery } = itunesApi;

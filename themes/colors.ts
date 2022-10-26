@@ -12,7 +12,7 @@ const textSecondary = "#f2f2f2";
 const secondary = "#EFF8E2";
 const success = "#70A9A1";
 const error = "#ED474A";
-const gotoStories = "#3C4048";
+const gotoStories = "#594545";
 
 const colors = {
   transparent: "rgba(0,0,0,0)",

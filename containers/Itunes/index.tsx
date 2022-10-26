@@ -6,7 +6,7 @@ import ErrorState from "@app/features/itunes/components/ErrorState";
 import { Header, SearchBox, TracksList, YouAreAwesome } from "@app/features/itunes/components";
 import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
 import Recommended, { Recommendation } from "@app/features/itunes/components/Recommended";
-import { colors, fonts } from "@app/themes";
+import { colors } from "@app/themes";
 import { T } from "@app/common/T";
 
 interface ITunesError {
@@ -23,7 +23,7 @@ interface ITunesError {
 }
 
 interface ItunesContainerProps {
-  recommendations: Recommendation[];
+  recommendations?: Recommendation[];
 }
 
 const Container = styled.div`
@@ -48,11 +48,12 @@ const StyledRecommnendationWrapper = styled.div`
   }
 `;
 
-export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendations }) => {
+export const TracksContainer: React.FC<ItunesContainerProps> = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(searchTerm, {
-    skip: !searchTerm,
-  });
+  const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(
+    { searchTerm },
+    { skip: !searchTerm }
+  );
 
   const handleOnChange = trackName => setSearchTerm(trackName);
 
@@ -62,8 +63,8 @@ export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendation
     <>
       <Container>
         <StyledRecommnendationWrapper>
-          <T id="recommended" styles={fonts.style.subheading()} />
-          <Recommended recommendations={recommendations} />
+          <T id="recommended" />
+          <Recommended />
           <YouAreAwesome href="https://www.iamawesome.com/">
             <T id="you_are_awesome" />
           </YouAreAwesome>
