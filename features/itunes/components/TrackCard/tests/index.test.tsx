@@ -19,8 +19,9 @@ describe("<TrackCard />", () => {
     expect(baseElement).toMatchSnapshot();
   });
 
-  it("should render 1 TrackCard component", () => {
-    const { getByTestId } = render(<TrackCard {...trackCardProps} />);
-    expect(getByTestId("track-card")).toBeInTheDocument();
+  it("should render the Show Details text", () => {
+    const { getByRole } = render(<TrackCard {...trackCardProps} isShowDetailsButton={true} />);
+    const button = getByRole("button");
+    expect(button).toHaveTextContent(/show details/i);
   });
 });
