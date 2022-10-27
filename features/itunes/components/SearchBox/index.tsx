@@ -2,7 +2,7 @@ import { injectIntl, IntlShape } from "react-intl";
 import styled from "styled-components";
 import { Input, Card } from "antd";
 import { T } from "@app/common/T";
-import { colors, media } from "@app/themes";
+import { colors } from "@app/themes";
 
 export interface SearchBoxProps {
   intl: IntlShape;
@@ -38,7 +38,6 @@ const SearchBox = ({ intl, debouncedHandleOnChange }: SearchBoxProps) => {
         <T id="track_search_default" />
         <Search
           onChange={e => debouncedHandleOnChange(e.target.value)}
-          onSearch={searchValue => debouncedHandleOnChange(searchValue)}
           type="text"
           data-testid="search-bar"
           placeholder={intl.formatMessage({ id: "search_placeholder" })}
