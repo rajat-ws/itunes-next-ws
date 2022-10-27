@@ -4,7 +4,7 @@ exports[`<TracksList /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="TracksList__TracksListWrapper-sc-17ws8w0-0 GbUCs"
+      class="TracksList__TracksListWrapper-sc-17ws8w0-0 cblBkK"
     >
       <div
         class="ant-skeleton ant-skeleton-active"

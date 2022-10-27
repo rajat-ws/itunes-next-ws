@@ -16,7 +16,7 @@ const TracksListWrapper = styled.div`
     gap: 2rem;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 0 auto;
+    margin: 0 0.5rem;
   }
 `;
 
@@ -29,7 +29,7 @@ const TracksList: React.FC<TrackListProps> = props => {
       <If condition={results.length !== 0}>
         <Skeleton loading={loading} active>
           {results.map((item: TrackItem, index: number) => {
-            return <TrackCard key={index} data={item} />;
+            return <TrackCard key={index} data={item} isShowDetailsButton />;
           })}
         </Skeleton>
       </If>

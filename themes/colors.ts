@@ -6,6 +6,7 @@
  */
 
 const primary = "#3c4048";
+const primaryDark = "#16213E";
 const text = "#69353F";
 const primaryLink = "#1D1CE5";
 const textSecondary = "#f2f2f2";
@@ -20,6 +21,7 @@ const colors = {
   text,
   textSecondary,
   primary,
+  primaryDark,
   secondary,
   primaryLink,
   success,

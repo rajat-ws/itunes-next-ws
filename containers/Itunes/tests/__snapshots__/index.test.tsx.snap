@@ -7,7 +7,7 @@ exports[`<TracksContainer /> should render and match the snapshot 1`] = `
       class="Itunes__Container-sc-1ic33np-0 daecaT"
     >
       <div
-        class="Itunes__StyledRecommnendationWrapper-sc-1ic33np-1 gKGkdt"
+        class="Itunes__StyledRecommnendationWrapper-sc-1ic33np-1 fRqCUJ"
       >
         <p
           class="T__StyledText-sc-apdcd0-0 fjJkvM"
@@ -18,9 +18,7 @@ exports[`<TracksContainer /> should render and match the snapshot 1`] = `
         <div
           class="ant-row"
           data-testid="recommended"
-        >
-          0
-        </div>
+        />
         <a
           class="styled__YouAreAwesome-sc-14jlyoy-0 dNRafI"
           href="https://www.iamawesome.com/"
