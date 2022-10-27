@@ -26,6 +26,7 @@ describe("<SearchBox />", () => {
     fireEvent.change(getByTestId("search-bar"), {
       target: { value: "Anuv" },
     });
+
     expect(debouncedHandleOnChangeSpy).toHaveBeenCalled();
     await timeout(500);
     fireEvent.change(getByTestId("search-bar"), {

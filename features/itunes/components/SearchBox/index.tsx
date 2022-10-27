@@ -38,7 +38,6 @@ const SearchBox = ({ intl, debouncedHandleOnChange }: SearchBoxProps) => {
         <T id="track_search_default" />
         <Search
           onChange={e => debouncedHandleOnChange(e.target.value)}
-          onSearch={searchValue => debouncedHandleOnChange(searchValue)}
           type="text"
           data-testid="search-bar"
           placeholder={intl.formatMessage({ id: "search_placeholder" })}

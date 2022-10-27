@@ -9,6 +9,7 @@ const { Paragraph } = Typography;
 
 interface TrackCardProps {
   data: TrackItem;
+  isShowDetailsButton: boolean;
 }
 
 const TrackCardWrapper = styled(Card)`
@@ -35,10 +36,32 @@ const StyledSpan = styled.span`
   }
 `;
 
-const TrackCard: React.FC<TrackCardProps> = ({ data }) => {
+const ButtonWrapper = styled.div`
+  && {
+    background: yellow;
+  }
+`;
+
+const ShowDetailsButton = styled.button`
+  && {
+    background-color: ${colors.primary};
+    color: ${colors.textSecondary};
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    ${fonts.size.xRegular}
+
+    &:hover {
+      background-color: ${colors.primaryDark};
+    }
+  }
+`;
+
+const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton }) => {
   const { artistName, artworkUrl100: imageUrl, collectionName, trackName } = data;
   return (
-    <TrackCardWrapper>
+    <TrackCardWrapper data-testid="track-card">
       <If condition={!isEmpty(imageUrl)} otherwise={"No image available"}>
         <Image src={imageUrl} width="80%" alt={artistName} />
       </If>
@@ -62,13 +85,23 @@ const TrackCard: React.FC<TrackCardProps> = ({ data }) => {
 
         <If
           condition={!isEmpty(trackName)}
-          otherwise={<Paragraph>No track name available</Paragraph>}
+          otherwise={
+            <Paragraph>
+              <StyledSpan> Track name: </StyledSpan> No track name available
+            </Paragraph>
+          }
         >
           <Paragraph>
             <StyledSpan> Track name: </StyledSpan> {trackName}
           </Paragraph>
         </If>
       </StyledDescription>
+
+      <ButtonWrapper>
+        <If condition={isShowDetailsButton}>
+          <ShowDetailsButton> Show Details </ShowDetailsButton>
+        </If>
+      </ButtonWrapper>
     </TrackCardWrapper>
   );
 };
