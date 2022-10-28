@@ -1,16 +1,18 @@
-import { isEmpty } from "lodash";
+import { useRouter } from "next/router";
 import styled from "styled-components";
+import { isEmpty } from "lodash";
 import { Card, Image, Typography } from "antd";
 import { colors, fonts } from "@app/themes";
 import { If } from "@app/common";
-import { TrackItem } from "../../api/getTracks";
+import { TrackItem } from "@app/features/trackDetails/api/getTrackDetails";
 
 const { Paragraph } = Typography;
 
-interface TrackCardProps {
+export type TrackCardProps = {
   data: TrackItem;
   isShowDetailsButton: boolean;
-}
+  isShowDetails: boolean;
+};
 
 const TrackCardWrapper = styled(Card)`
   && {
@@ -58,8 +60,21 @@ const ShowDetailsButton = styled.button`
   }
 `;
 
-const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton }) => {
-  const { artistName, artworkUrl100: imageUrl, collectionName, trackName } = data;
+const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShowDetails }) => {
+  const {
+    artistName,
+    artworkUrl100: imageUrl,
+    trackTimeMillis: trackDuration,
+    collectionName,
+    trackName,
+    trackId,
+    country,
+    primaryGenreName,
+    kind,
+    wrapperType,
+  } = data;
+  const router = useRouter();
+
   return (
     <TrackCardWrapper data-testid="track-card">
       <If condition={!isEmpty(imageUrl)} otherwise={"No image available"}>
@@ -95,11 +110,35 @@ const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton }) => {
             <StyledSpan> Track name: </StyledSpan> {trackName}
           </Paragraph>
         </If>
+
+        <If condition={isShowDetails}>
+          <Paragraph>
+            <StyledSpan> Country: </StyledSpan> {country}
+          </Paragraph>
+          <Paragraph>
+            <StyledSpan> Kind: </StyledSpan> {kind}
+          </Paragraph>
+          <Paragraph>
+            <StyledSpan> Genre: </StyledSpan> {primaryGenreName}
+          </Paragraph>
+          <Paragraph>
+            <StyledSpan> Wrapper Type: </StyledSpan> {wrapperType}
+          </Paragraph>
+
+          {trackDuration && (
+            <Paragraph>
+              <StyledSpan> Duration: </StyledSpan> {Math.floor(trackDuration / 60000)}:
+              {Math.floor(trackDuration / 1000) % 60}s
+            </Paragraph>
+          )}
+        </If>
       </StyledDescription>
 
       <ButtonWrapper>
         <If condition={isShowDetailsButton}>
-          <ShowDetailsButton> Show Details </ShowDetailsButton>
+          <ShowDetailsButton onClick={() => router.push(`/trackDetails/${trackId}`)}>
+            Show Details
+          </ShowDetailsButton>
         </If>
       </ButtonWrapper>
     </TrackCardWrapper>

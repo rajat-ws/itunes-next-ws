@@ -2,11 +2,19 @@ import { itunesApiService } from "@app/utils/apiUtils";
 import { convertObjectToCamelCase } from "@utils";
 
 export interface TrackItem {
+  country: string;
+  primaryGenreName: string;
   collectionName: string;
-  artistName: string;
   trackName: string;
-  trackId: number;
+  artistName: string;
+  imageUrl: string;
   artworkUrl100: string;
+  previewUrl: string;
+  wrapperType: string;
+  duration: number;
+  trackTimeMillis: number;
+  trackId: number;
+  kind: string;
 }
 
 export type TrackResponse = {

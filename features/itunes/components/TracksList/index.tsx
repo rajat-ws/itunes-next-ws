@@ -29,7 +29,7 @@ const TracksList: React.FC<TrackListProps> = props => {
       <If condition={results.length !== 0}>
         <Skeleton loading={loading} active>
           {results.map((item: TrackItem, index: number) => {
-            return <TrackCard key={index} data={item} isShowDetailsButton />;
+            return <TrackCard key={index} data={item} isShowDetailsButton isShowDetails={false} />;
           })}
         </Skeleton>
       </If>
