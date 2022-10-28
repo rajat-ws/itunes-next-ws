@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import isEmpty from "lodash/isEmpty";
@@ -32,7 +33,7 @@ const StyledDescription = styled.div`
 
 const StyledSpan = styled.span`
   && {
-    color: ${colors.success};
+    color: ${colors.text};
     ${fonts.weights.bold}
     ${fonts.size.big}
   }
@@ -40,7 +41,9 @@ const StyledSpan = styled.span`
 
 const ButtonWrapper = styled.div`
   && {
-    background: yellow;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
   }
 `;
 
@@ -51,12 +54,38 @@ const ShowDetailsButton = styled.button`
     padding: 5px;
     cursor: pointer;
     border: none;
+    border-radius: 0.5rem;
     width: 100%;
     ${fonts.size.xRegular}
+    ${fonts.weights.bold}
 
     &:hover {
       background-color: ${colors.primaryDark};
     }
+  }
+`;
+
+const PlayButton = styled.button`
+  && {
+    background-color: ${colors.success};
+    color: ${colors.textSecondary};
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+      background-color: ${colors.successLight};
+    }
+  }
+`;
+
+const ButtonLabel = styled.span`
+  && {
+    ${fonts.weights.bold}
+    ${fonts.size.big}
   }
 `;
 
@@ -68,12 +97,27 @@ const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShow
     collectionName,
     trackName,
     trackId,
+    previewUrl,
     country,
     primaryGenreName,
     kind,
     wrapperType,
   } = data;
   const router = useRouter();
+  const [isTrackPlaying, setIsTrackPlaying] = useState<boolean>(false);
+
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handlePlayPause = () => {
+    const isTrackPaused = audioRef.current?.paused;
+
+    if (isTrackPaused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current?.pause();
+    }
+    setIsTrackPlaying(!isTrackPlaying);
+  };
 
   return (
     <TrackCardWrapper data-testid="track-card">
@@ -140,7 +184,16 @@ const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShow
             Show Details
           </ShowDetailsButton>
         </If>
+        <PlayButton onClick={handlePlayPause}>
+          <If
+            condition={audioRef.current?.src && !audioRef.current?.paused}
+            otherwise={<ButtonLabel> Play </ButtonLabel>}
+          >
+            <ButtonLabel> Pause </ButtonLabel>
+          </If>
+        </PlayButton>
       </ButtonWrapper>
+      <audio src={previewUrl} data-testid="trackAudio" ref={audioRef} />
     </TrackCardWrapper>
   );
 };
