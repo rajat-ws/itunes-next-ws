@@ -11,7 +11,8 @@ const text = "#69353F";
 const primaryLink = "#1D1CE5";
 const textSecondary = "#f2f2f2";
 const secondary = "#EFF8E2";
-const success = "#70A9A1";
+const success = "#749F82";
+const successLight = "#82CD47";
 const error = "#ED474A";
 const gotoStories = "#594545";
 
@@ -25,6 +26,7 @@ const colors = {
   secondary,
   primaryLink,
   success,
+  successLight,
   error,
   gotoStories,
   theme: {
