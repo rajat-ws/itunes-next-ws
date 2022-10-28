@@ -1,5 +1,6 @@
-import { render } from "@app/utils/testUtils";
+import React from "react";
 import TracksList from "../index";
+import { render } from "@app/utils/testUtils";
 
 describe("<TracksList />", () => {
   const trackListDataProps = {
