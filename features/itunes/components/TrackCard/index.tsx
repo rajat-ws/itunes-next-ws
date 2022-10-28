@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { isEmpty } from "lodash";
+import isEmpty from "lodash/isEmpty";
 import { Card, Image, Typography } from "antd";
 import { colors, fonts } from "@app/themes";
 import { If } from "@app/common";
