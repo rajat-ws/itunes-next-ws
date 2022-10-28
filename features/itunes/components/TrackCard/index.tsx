@@ -123,8 +123,9 @@ const TrackCard: React.FC<TrackCardProps> = ({
       audioRef.current?.pause();
     }
     setIsTrackPlaying(!isTrackPlaying);
-    {
-      !isShowDetails && handlePlayPauseWrapper(audioRef);
+
+    if (!isShowDetails) {
+      handlePlayPauseWrapper(audioRef);
     }
   };
 
