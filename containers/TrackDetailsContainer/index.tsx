@@ -37,7 +37,7 @@ const TrackDetailsContainer = () => {
     <StyledTrackDetailsWrapper>
       <Spin spinning={isFetching} />
       {singleTrackDetailData && (
-        <TrackCard data={singleTrackDetailData} isShowDetailsButton={true} isShowDetails={true} />
+        <TrackCard data={singleTrackDetailData} isShowDetailsButton={false} isShowDetails={true} />
       )}
     </StyledTrackDetailsWrapper>
   );
