@@ -5,7 +5,7 @@ import isEmpty from "lodash/isEmpty";
 import { Card, Image, Typography } from "antd";
 import { colors, fonts } from "@app/themes";
 import { If } from "@app/common";
-import { TrackItem } from "@app/features/trackDetails/api/getTrackDetails";
+import { TrackItem } from "../../api/getTracks";
 
 const { Paragraph } = Typography;
 
@@ -13,6 +13,7 @@ export type TrackCardProps = {
   data: TrackItem;
   isShowDetailsButton: boolean;
   isShowDetails: boolean;
+  handlePlayPauseWrapper;
 };
 
 const TrackCardWrapper = styled(Card)`
@@ -89,15 +90,20 @@ const ButtonLabel = styled.span`
   }
 `;
 
-const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShowDetails }) => {
+const TrackCard: React.FC<TrackCardProps> = ({
+  data,
+  isShowDetailsButton,
+  isShowDetails,
+  handlePlayPauseWrapper,
+}) => {
   const {
     artistName,
-    artworkUrl100: imageUrl,
-    trackTimeMillis: trackDuration,
-    collectionName,
     trackName,
     trackId,
+    trackTimeMillis: trackDuration,
+    artworkUrl100: imageUrl,
     previewUrl,
+    collectionName,
     country,
     primaryGenreName,
     kind,
@@ -117,6 +123,10 @@ const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShow
       audioRef.current?.pause();
     }
     setIsTrackPlaying(!isTrackPlaying);
+
+    if (!isShowDetails) {
+      handlePlayPauseWrapper(audioRef);
+    }
   };
 
   return (
@@ -180,11 +190,14 @@ const TrackCard: React.FC<TrackCardProps> = ({ data, isShowDetailsButton, isShow
 
       <ButtonWrapper>
         <If condition={isShowDetailsButton}>
-          <ShowDetailsButton onClick={() => router.push(`/trackDetails/${trackId}`)}>
+          <ShowDetailsButton
+            data-testid="showDetails"
+            onClick={() => router.push(`/trackDetails/${trackId}`)}
+          >
             Show Details
           </ShowDetailsButton>
         </If>
-        <PlayButton onClick={handlePlayPause}>
+        <PlayButton onClick={handlePlayPause} data-testid="playPauseBtn">
           <If
             condition={audioRef.current?.src && !audioRef.current?.paused}
             otherwise={<ButtonLabel> Play </ButtonLabel>}
