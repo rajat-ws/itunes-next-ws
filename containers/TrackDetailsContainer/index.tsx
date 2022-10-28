@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Spin } from "antd";
-import { isEmpty } from "lodash";
 import styled from "styled-components";
-import { If } from "@app/common";
 import TrackCard from "@app/features/itunes/components/TrackCard";
 import {
   TrackItem,
