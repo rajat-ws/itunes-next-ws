@@ -7,20 +7,22 @@ exports[`<TracksContainer /> should render and match the snapshot 1`] = `
       class="Itunes__Container-sc-1ic33np-0 daecaT"
     >
       <div
-        class="Itunes__StyledRecommnendationWrapper-sc-1ic33np-1 fRqCUJ"
+        class="Itunes__StyledRecommnendationWrapper-sc-1ic33np-1 iGXEIr"
       >
         <p
           class="T__StyledText-sc-apdcd0-0 fjJkvM"
           data-testid="t"
         >
-          Recommendation of the Day
+          Song recommendations of today !
         </p>
         <div
-          class="ant-row"
+          class="Recommended__StyledRecommendedContainer-sc-1a3frhj-0 bFbAXf"
           data-testid="recommended"
-        />
+        >
+          0
+        </div>
         <a
-          class="styled__YouAreAwesome-sc-14jlyoy-0 dNRafI"
+          class="styled__YouAreAwesome-sc-14jlyoy-0 gDBYYq"
           href="https://www.iamawesome.com/"
         >
           <p
@@ -36,16 +38,16 @@ exports[`<TracksContainer /> should render and match the snapshot 1`] = `
         role="separator"
       />
       <div
-        class="Header__HeaderContainer-sc-12p05nx-0 eUWmIO"
+        class="Header__HeaderContainer-sc-12p05nx-0 kfRPmN"
       >
         <span
           class="Header__HeaderTitle-sc-12p05nx-1 eeGxed"
         >
-           Itunes Store 
+           Itunes Store 🎶 
         </span>
       </div>
       <div
-        class="SearchBox__SearchBoxContainer-sc-1oybr6i-0 jrJnG"
+        class="SearchBox__SearchBoxContainer-sc-1oybr6i-0 bQhqJN"
         data-testid="search-box"
       >
         <div
@@ -82,7 +84,7 @@ exports[`<TracksContainer /> should render and match the snapshot 1`] = `
                 <input
                   class="ant-input"
                   data-testid="search-bar"
-                  placeholder="Baarishein by Anuv Jain..."
+                  placeholder="Baarishein by Anuv Jain... 🎶"
                   type="text"
                   value=""
                 />

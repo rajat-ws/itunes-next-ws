@@ -4,7 +4,7 @@ exports[`<SearchBox /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="SearchBox__SearchBoxContainer-sc-1oybr6i-0 jrJnG"
+      class="SearchBox__SearchBoxContainer-sc-1oybr6i-0 bQhqJN"
       data-testid="search-box"
     >
       <div
@@ -41,7 +41,7 @@ exports[`<SearchBox /> should render and match the snapshot 1`] = `
               <input
                 class="ant-input"
                 data-testid="search-bar"
-                placeholder="Baarishein by Anuv Jain..."
+                placeholder="Baarishein by Anuv Jain... 🎶"
                 type="text"
                 value=""
               />

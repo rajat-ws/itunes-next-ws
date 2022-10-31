@@ -4,12 +4,12 @@ exports[`<Header /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="Header__HeaderContainer-sc-12p05nx-0 eUWmIO"
+      class="Header__HeaderContainer-sc-12p05nx-0 kfRPmN"
     >
       <span
         class="Header__HeaderTitle-sc-12p05nx-1 eeGxed"
       >
-         Itunes Store 
+         Itunes Store 🎶 
       </span>
     </div>
   </div>

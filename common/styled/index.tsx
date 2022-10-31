@@ -1,6 +1,6 @@
 import styled, { CSSProperties } from "styled-components";
 import { Card, Tag } from "antd";
-import { colors, styles } from "@themes";
+import { colors, fonts } from "@themes";
 
 interface Props {
   maxwidth: CSSProperties["maxWidth"];
@@ -28,6 +28,9 @@ export const CustomCard = styled(Card)<{ maxwidth?: CSSProperties["maxWidth"] }>
 `;
 
 export const ClickableTags = styled(Tag)`
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  ${fonts.size.xRegular}
   cursor: pointer;
   :hover {
     border: 1px solid ${colors.primary};

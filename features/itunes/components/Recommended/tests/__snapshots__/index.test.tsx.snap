@@ -4,16 +4,15 @@ exports[`<Recommended /> should render and match the snapshot 1`] = `
 <body>
   <div>
     <div
-      class="ant-row"
+      class="Recommended__StyledRecommendedContainer-sc-1a3frhj-0 bFbAXf"
       data-testid="recommended"
     >
-      <div
-        class="ant-col"
-      >
+      <div>
         <span
-          class="ant-tag styled__ClickableTags-sc-15gkald-2 jcfvhN"
+          class="ant-tag styled__ClickableTags-sc-15gkald-2 kagfWg"
         >
-          test repo name
+          Baarishein
+           🎶 
         </span>
       </div>
     </div>
