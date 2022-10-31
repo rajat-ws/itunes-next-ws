@@ -5,31 +5,39 @@
  */
 
 import React from "react";
-import { Row, Col } from "antd";
 import { useRouter } from "next/router";
 import { ClickableTags } from "@common";
+import styled from "styled-components";
 
 interface RecommendedProps {
   recommendations?: Recommendation[];
 }
 
 export interface Recommendation {
-  id: number;
-  name: string;
+  trackId: number;
+  trackName: string;
 }
+
+const StyledRecommendedContainer = styled.div`
+  && {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+`;
 
 const Recommended: React.FC<RecommendedProps> = ({ recommendations }) => {
   const router = useRouter();
 
   return (
-    <Row data-testid="recommended">
+    <StyledRecommendedContainer data-testid="recommended">
       {recommendations?.length &&
-        recommendations.map(({ id, name }) => (
-          <Col key={id} onClick={() => router.push(`/info/${name}`)}>
-            <ClickableTags>{name}</ClickableTags>
-          </Col>
+        recommendations.map(({ trackId, trackName }) => (
+          <div key={trackId} onClick={() => router.push(`/trackDetails/${trackId}`)}>
+            <ClickableTags>{trackName} 🎶 </ClickableTags>
+          </div>
         ))}
-    </Row>
+    </StyledRecommendedContainer>
   );
 };
 

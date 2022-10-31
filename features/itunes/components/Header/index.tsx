@@ -1,4 +1,4 @@
-import { colors } from "@app/themes";
+import { colors, media } from "@app/themes";
 import { injectIntl } from "react-intl";
 import styled from "styled-components";
 
@@ -9,6 +9,10 @@ const HeaderContainer = styled.div`
     width: 50%;
     margin: 0 auto;
     background: ${colors.primary};
+
+    ${media.lessThan("mobile")`
+    width: 90%;
+    `}
   }
 `;
 
@@ -22,7 +26,7 @@ const HeaderTitle = styled.span`
 const Header = () => {
   return (
     <HeaderContainer>
-      <HeaderTitle> Itunes Store </HeaderTitle>
+      <HeaderTitle> Itunes Store 🎶 </HeaderTitle>
     </HeaderContainer>
   );
 };

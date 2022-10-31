@@ -12,8 +12,8 @@ describe("<Recommended />", () => {
   const props = {
     recommendations: [
       {
-        name: "test repo name",
-        id: 1,
+        trackId: 12345,
+        trackName: "Baarishein",
       },
     ],
   };

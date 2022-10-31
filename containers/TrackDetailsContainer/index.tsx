@@ -7,6 +7,7 @@ import {
   TrackItem,
   useFetchTrackDetailsQuery,
 } from "@app/features/trackDetails/api/getTrackDetails";
+import { media } from "@app/themes";
 
 const StyledTrackDetailsWrapper = styled.div`
   && {
@@ -14,6 +15,12 @@ const StyledTrackDetailsWrapper = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
+
+    ${media.lessThan("mobile")`
+      && {
+        margin: 2rem 1rem;
+      }
+    `}
   }
 `;
 
@@ -35,7 +42,12 @@ const TrackDetailsContainer = () => {
     <StyledTrackDetailsWrapper>
       <Spin spinning={isFetching} />
       {singleTrackDetailData && (
-        <TrackCard data={singleTrackDetailData} isShowDetailsButton={false} isShowDetails={true} />
+        <TrackCard
+          data={singleTrackDetailData}
+          isShowDetailsButton={false}
+          isShowDetails={true}
+          handlePlayPauseWrapper
+        />
       )}
     </StyledTrackDetailsWrapper>
   );

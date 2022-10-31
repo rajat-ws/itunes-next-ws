@@ -6,7 +6,7 @@ import ErrorState from "@app/features/itunes/components/ErrorState";
 import { Header, SearchBox, TracksList, YouAreAwesome } from "@app/features/itunes/components";
 import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
 import Recommended, { Recommendation } from "@app/features/itunes/components/Recommended";
-import { colors } from "@app/themes";
+import { colors, media } from "@app/themes";
 import { T } from "@app/common/T";
 
 interface ITunesError {
@@ -41,14 +41,18 @@ const Container = styled.div`
 const StyledRecommnendationWrapper = styled.div`
   && {
     width: 50%;
-    padding: 1rem 0;
+    padding: 1rem;
     background: ${colors.gotoStories};
     color: ${colors.textSecondary};
     margin: 0 auto;
+
+    ${media.lessThan("mobile")`
+    width: 90%;
+    `}
   }
 `;
 
-export const TracksContainer: React.FC<ItunesContainerProps> = () => {
+export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendations }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(
     { searchTerm },
@@ -64,7 +68,7 @@ export const TracksContainer: React.FC<ItunesContainerProps> = () => {
       <Container>
         <StyledRecommnendationWrapper>
           <T id="recommended" />
-          <Recommended />
+          <Recommended recommendations={recommendations} />
           <YouAreAwesome href="https://www.iamawesome.com/">
             <T id="you_are_awesome" />
           </YouAreAwesome>

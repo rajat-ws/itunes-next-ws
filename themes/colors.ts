@@ -14,7 +14,7 @@ const secondary = "#EFF8E2";
 const success = "#749F82";
 const successLight = "#82CD47";
 const error = "#ED474A";
-const gotoStories = "#594545";
+const gotoStories = "#413F42";
 
 const colors = {
   transparent: "rgba(0,0,0,0)",
