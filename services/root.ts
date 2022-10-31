@@ -2,7 +2,11 @@ import { TrackDetail } from "@app/features/trackDetails/api/getTrackDetails";
 import { ApiResponse } from "apisauce";
 import { generateApiClient } from "../utils/apiUtils";
 
-const itunesApi = generateApiClient("itunes");
+enum APIClients {
+  ITUNES = "itunes",
+}
+
+const itunesApi = generateApiClient(APIClients.ITUNES);
 
 export const getRecommendations = async () => {
   if (!itunesApi) return [];
