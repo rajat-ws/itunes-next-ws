@@ -14,7 +14,7 @@ const StyledTrackDetailsWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 2rem; 
 
     ${media.lessThan("mobile")`
       && {
