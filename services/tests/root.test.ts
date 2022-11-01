@@ -3,7 +3,7 @@ import { getApiClient } from "../../utils/apiUtils";
 import { getRecommendations } from "../root";
 
 describe("root tests", () => {
-  it("should ensure it returns data when response is ok", async () => {
+  it("should ensure data as expected", async () => {
     const mock = new MockAdapter(getApiClient().axiosInstance);
     const resData = { results: [{ trackId: 12345, trackName: "Baarishein" }] };
     mock.onGet(`/search?term=anuv`).reply(200, resData);
@@ -11,7 +11,7 @@ describe("root tests", () => {
     expect(res).toEqual(resData.results);
   });
 
-  it("should ensure it returns an empty array when err coming in response ", async () => {
+  it("should return an empty array if an error is present in the response", async () => {
     const mock = new MockAdapter(getApiClient().axiosInstance);
     const resData = { data: ["as"] };
     mock.onGet(`/search?term=anuv`).reply(404, resData);
