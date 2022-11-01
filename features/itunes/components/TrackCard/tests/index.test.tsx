@@ -48,9 +48,32 @@ describe("<TrackCard />", () => {
   });
 
   it("should check for Show Details button in track card component", () => {
-    const { getByTestId } = render(<TrackCard {...trackCardProps} isShowDetailsButton={true} />);
+    const handlePlayPauseSpy = jest.fn();
+    const { getByTestId } = render(
+      <TrackCard
+        {...trackCardProps}
+        handlePlayPauseWrapper={handlePlayPauseSpy}
+        isShowDetailsButton={true}
+      />
+    );
 
     expect(getByTestId("showDetails")).toBeInTheDocument();
     fireEvent.click(getByTestId("showDetails"));
+  });
+
+  it("should utlize the handlePlayPause when isShowDetails is false", async () => {
+    const handlePlayPauseSpy = jest.fn();
+
+    const { getByRole } = render(
+      <TrackCard
+        {...trackCardProps}
+        handlePlayPauseWrapper={handlePlayPauseSpy}
+        isShowDetails={false}
+      />
+    );
+    const button = getByRole("button");
+
+    expect(button).toHaveTextContent(/play/i);
+    fireEvent.click(button, { onclick: handlePlayPauseSpy() });
   });
 });
