@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Spin, Divider } from "antd";
+import { Spin, Divider, Pagination } from "antd";
 import { debounce } from "lodash";
 import styled from "styled-components";
 import ErrorState from "@app/features/itunes/components/ErrorState";
@@ -52,6 +52,24 @@ const StyledRecommnendationWrapper = styled.div`
   }
 `;
 
+const PaginationWrapper = styled.div`
+  && {
+    padding: 1rem;
+
+    .ant-pagination-item {
+      background: ${colors.primary};
+    }
+
+    .ant-pagination-item a {
+      color: ${colors.secondary};
+    }
+
+    .ant-pagination-item-active {
+      background-color: ${colors.success};
+    }
+  }
+`;
+
 export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendations }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(
@@ -78,6 +96,11 @@ export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendation
         <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
         <Spin spinning={isFetching} />
         {isSuccess && <TracksList loading={isLoading} tracksData={data} />}
+        {data && (
+          <PaginationWrapper>
+            <Pagination defaultCurrent={1} total={50} />
+          </PaginationWrapper>
+        )}
         <ErrorState
           tracksData={data}
           loading={isLoading && isFetching}

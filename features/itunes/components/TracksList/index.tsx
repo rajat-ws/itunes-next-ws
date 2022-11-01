@@ -23,6 +23,7 @@ const TracksListWrapper = styled.div`
 
 const TracksList: React.FC<TrackListProps> = props => {
   const { tracksData, loading } = props;
+
   const [currentPlayingTrack, setCurrentPlayingTrack] = useState<any>(null);
   const results: TrackItem[] = get(tracksData, "results", []);
 
