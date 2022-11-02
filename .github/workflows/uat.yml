@@ -41,7 +41,7 @@ jobs:
         with:
           args: --acl public-read --follow-symlinks
         env:
-          SOURCE_DIR: "./out/"
+          SOURCE_DIR: "./build/"
           DEST_DIR: ${{ steps.vars.outputs.branch }}
 
       - name: Deploy S3 fallback page
