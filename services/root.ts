@@ -10,14 +10,14 @@ const itunesApi = generateApiClient(APIClients.ITUNES);
 
 export const getRecommendations = async () => {
   if (!itunesApi) return [];
-  const res = await itunesApi.get<TrackDetail>("/search?term=anuv");
+  const res = await itunesApi.get<TrackDetail>("/search?term=coldplay");
 
   const getData = (response: ApiResponse<TrackDetail>) => {
     if (!response.ok || !response.data) {
       return [];
     }
 
-    const recommendations = ["Mishri", "Ocean"];
+    const recommendations = ["Magic", "Yellow"];
 
     return response.data.results
       .filter(({ trackName }) => recommendations.includes(trackName))
