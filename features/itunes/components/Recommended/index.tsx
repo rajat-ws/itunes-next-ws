@@ -33,7 +33,11 @@ const Recommended: React.FC<RecommendedProps> = ({ recommendations }) => {
     <StyledRecommendedContainer data-testid="recommended">
       {recommendations?.length &&
         recommendations.map(({ trackId, trackName }) => (
-          <div key={trackId} onClick={() => router.push(`/trackDetails/${trackId}`)}>
+          <div
+            data-testid="recommendTag"
+            key={trackId}
+            onClick={() => router.push(`/trackDetails/${trackId}`)}
+          >
             <ClickableTags>{trackName} 🎶 </ClickableTags>
           </div>
         ))}

@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { render } from "@utils/testUtils";
+import { fireEvent, render } from "@utils/testUtils";
 import Recommended from "../index";
 
 describe("<Recommended />", () => {
@@ -26,5 +26,11 @@ describe("<Recommended />", () => {
   it("should contain 1 Recommended component", () => {
     const { getAllByTestId } = render(<Recommended {...props} />);
     expect(getAllByTestId("recommended").length).toBe(1);
+  });
+
+  it("should check for recommend-tag inside the component", () => {
+    const { getByTestId } = render(<Recommended {...props} />);
+    expect(getByTestId("recommendTag")).toBeInTheDocument();
+    fireEvent.click(getByTestId("recommendTag"));
   });
 });

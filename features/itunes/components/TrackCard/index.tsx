@@ -132,7 +132,7 @@ const TrackCard: React.FC<TrackCardProps> = ({
   return (
     <TrackCardWrapper data-testid="track-card">
       <If condition={!isEmpty(imageUrl)} otherwise={"No image available"}>
-        <Image src={imageUrl} width="80%" alt={artistName} />
+        <Image src={imageUrl} width="80%" alt={collectionName} />
       </If>
       <StyledDescription>
         <If

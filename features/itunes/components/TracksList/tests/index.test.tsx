@@ -1,6 +1,7 @@
 import React from "react";
 import TracksList from "../index";
-import { render } from "@app/utils/testUtils";
+import { fireEvent, render, timeout } from "@app/utils/testUtils";
+import TrackCard from "../../TrackCard";
 
 describe("<TracksList />", () => {
   const trackListDataProps = {
@@ -24,5 +25,19 @@ describe("<TracksList />", () => {
   it("should render and match the snapshot", () => {
     const { baseElement } = render(<TracksList {...trackListDataProps} />);
     expect(baseElement).toMatchSnapshot();
+  });
+
+  it("should render the Pause text when Play button is clicked", async () => {
+    const handlePlayPauseSpy = jest.fn();
+    trackListDataProps.loading = false;
+    const { getByTestId } = render(
+      <TracksList {...trackListDataProps} handlePlayPauseWrapper={handlePlayPauseSpy} />
+    );
+    const button = getByTestId("playPauseBtn");
+
+    expect(button).toHaveTextContent(/play/i);
+    fireEvent.click(button, { onclick: handlePlayPauseSpy() });
+    await timeout(500);
+    expect(button).toHaveTextContent(/pause/i);
   });
 });

@@ -9,6 +9,7 @@ import { useState } from "react";
 interface TrackListProps {
   tracksData: TrackResponse;
   loading: boolean;
+  handlePlayPauseWrapper;
 }
 
 const TracksListWrapper = styled.div`

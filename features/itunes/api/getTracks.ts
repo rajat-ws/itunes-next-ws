@@ -24,12 +24,15 @@ export type TrackResponse = {
 
 type Params = {
   searchTerm: string;
+  offset: number;
+  limit: number;
 };
 
 export const itunesApi = itunesApiService.injectEndpoints({
   endpoints: builder => ({
     fetchTracks: builder.query<TrackResponse, object>({
-      query: (params: Params) => `search?term=${params.searchTerm}`,
+      query: (params: Params) =>
+        `search?term=${params.searchTerm}&offset=${params.offset}&limit=${params.limit}`,
       transformResponse: (response: TrackResponse) => {
         return convertObjectToCamelCase<TrackResponse>(response);
       },

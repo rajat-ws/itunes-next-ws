@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Spin, Divider, Pagination } from "antd";
 import { debounce } from "lodash";
 import styled from "styled-components";
@@ -55,6 +55,7 @@ const StyledRecommnendationWrapper = styled.div`
 const PaginationWrapper = styled.div`
   && {
     padding: 1rem;
+    margin: 0 2rem;
 
     .ant-pagination-item {
       background: ${colors.primary};
@@ -72,14 +73,30 @@ const PaginationWrapper = styled.div`
 
 export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendations }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [offset, setOffset] = useState<number>(0);
+  const limit = 10;
+
   const { data, error, isLoading, isFetching, isSuccess } = useFetchTracksQuery(
-    { searchTerm },
+    { searchTerm, offset, limit },
     { skip: !searchTerm }
   );
 
-  const handleOnChange = trackName => setSearchTerm(trackName);
+  const handleOnChange = trackName => {
+    setCurrentPage(1);
+    setSearchTerm(trackName);
+  };
+
+  const handleOnPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   const debouncedHandleOnChange = debounce(handleOnChange, 500);
+
+  useEffect(() => {
+    const offset = currentPage * limit;
+    setOffset(offset);
+  }, [currentPage]);
 
   return (
     <>
@@ -94,13 +111,14 @@ export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendation
         <Divider />
         <Header />
         <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
-        <Spin spinning={isFetching} />
-        {isSuccess && <TracksList loading={isLoading} tracksData={data} />}
         {data && (
           <PaginationWrapper>
-            <Pagination defaultCurrent={1} total={50} />
+            <Pagination defaultCurrent={1} total={50} onChange={handleOnPageChange} />
           </PaginationWrapper>
         )}
+        <Spin spinning={isFetching} />
+        {isSuccess && <TracksList loading={isLoading} tracksData={data} />}
+
         <ErrorState
           tracksData={data}
           loading={isLoading && isFetching}

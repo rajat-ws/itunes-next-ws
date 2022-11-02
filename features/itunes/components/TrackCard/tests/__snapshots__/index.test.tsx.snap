@@ -15,7 +15,7 @@ exports[`<TrackCard /> should render and match the snapshot 1`] = `
           style="width: 80%;"
         >
           <img
-            alt="Adele"
+            alt="collecition"
             class="ant-image-img"
             src="https://is5-ssl.mzstatic.com/image/thumb/Music116/v4/5a/47/6d/5a476ddd-4690-1297-1896-6a286a497a21/191404113974.png/100x100bb.jpg"
           />
