@@ -1,7 +1,6 @@
 import React from "react";
 import TracksList from "../index";
 import { fireEvent, render, timeout } from "@app/utils/testUtils";
-import TrackCard from "../../TrackCard";
 
 describe("<TracksList />", () => {
   const trackListDataProps = {
