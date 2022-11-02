@@ -17,7 +17,7 @@ export const getRecommendations = async () => {
       return [];
     }
 
-    const recommendations = ["Baarishein", "Ocean"];
+    const recommendations = ["Mishri", "Ocean"];
 
     return response.data.results
       .filter(({ trackName }) => recommendations.includes(trackName))
