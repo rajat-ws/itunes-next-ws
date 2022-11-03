@@ -5,7 +5,7 @@ import { getRecommendations } from "../root";
 describe("root tests", () => {
   it("should ensure data as expected", async () => {
     const mock = new MockAdapter(getApiClient().axiosInstance);
-    const resData = { results: [{ trackId: 12345, trackName: "Baarishein" }] };
+    const resData = { results: [{ trackId: 12345, trackName: "Ocean" }] };
     mock.onGet(`/search?term=anuv`).reply(200, resData);
     const res = await getRecommendations();
     expect(res).toEqual(resData.results);

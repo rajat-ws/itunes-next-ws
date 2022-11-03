@@ -68,10 +68,10 @@ exports[`<TrackCard /> should render and match the snapshot 1`] = `
             <span
               class="TrackCard__StyledSpan-sc-k4gp1w-2 kMUszr"
             >
-               Collection name: 
+               Genre: 
             </span>
              
-            collecition
+            abc
           </div>
           <div
             class="ant-typography"
@@ -112,10 +112,10 @@ exports[`<TrackCard /> should render and match the snapshot 1`] = `
             <span
               class="TrackCard__StyledSpan-sc-k4gp1w-2 kMUszr"
             >
-               Genre: 
+               Collection name: 
             </span>
              
-            abc
+            collecition
           </div>
           <div
             class="ant-typography"
