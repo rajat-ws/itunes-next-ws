@@ -24,7 +24,14 @@ export type TrackDetail = {
 
 export const trackDetailsApi = createApi({
   reducerPath: "trackDetailsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_ITUNES_URL }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.NEXT_PUBLIC_ITUNES_URL,
+    prepareHeaders: headers => {
+      headers.set("Access-Control-Allow-Origin", "*");
+      headers.set("Access-Control-Allow-Methods", "GET, POST, PUT,PATCH, DELETE, OPTIONS");
+      return headers;
+    },
+  }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {
       return action.payload[reducerPath];
