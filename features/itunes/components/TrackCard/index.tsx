@@ -144,11 +144,11 @@ const TrackCard: React.FC<TrackCardProps> = ({
           </Paragraph>
         </If>
         <If
-          condition={!isEmpty(collectionName)}
-          otherwise={<Paragraph>No collection name available</Paragraph>}
+          condition={!isEmpty(primaryGenreName)}
+          otherwise={<Paragraph>No primaryGenre name available</Paragraph>}
         >
           <Paragraph>
-            <StyledSpan> Collection name: </StyledSpan> {collectionName}
+            <StyledSpan> Genre: </StyledSpan> {primaryGenreName}
           </Paragraph>
         </If>
 
@@ -172,9 +172,11 @@ const TrackCard: React.FC<TrackCardProps> = ({
           <Paragraph>
             <StyledSpan> Kind: </StyledSpan> {kind}
           </Paragraph>
+
           <Paragraph>
-            <StyledSpan> Genre: </StyledSpan> {primaryGenreName}
+            <StyledSpan> Collection name: </StyledSpan> {collectionName}
           </Paragraph>
+
           <Paragraph>
             <StyledSpan> Wrapper Type: </StyledSpan> {wrapperType}
           </Paragraph>

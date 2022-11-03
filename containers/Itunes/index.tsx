@@ -4,7 +4,7 @@ import { debounce } from "lodash";
 import styled from "styled-components";
 import ErrorState from "@app/features/itunes/components/ErrorState";
 import { Header, SearchBox, TracksList, YouAreAwesome } from "@app/features/itunes/components";
-import { useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
+import { TrackResponse, useFetchTracksQuery } from "@app/features/itunes/api/getTracks";
 import Recommended, { Recommendation } from "@app/features/itunes/components/Recommended";
 import { colors, media } from "@app/themes";
 import { T } from "@app/common/T";
@@ -24,6 +24,7 @@ interface ITunesError {
 
 interface ItunesContainerProps {
   recommendations?: Recommendation[];
+  data: TrackResponse;
 }
 
 const Container = styled.div`
@@ -113,7 +114,12 @@ export const TracksContainer: React.FC<ItunesContainerProps> = ({ recommendation
         <SearchBox debouncedHandleOnChange={debouncedHandleOnChange} />
         {data && (
           <PaginationWrapper>
-            <Pagination defaultCurrent={1} total={50} onChange={handleOnPageChange} />
+            <Pagination
+              data-testid="pagination"
+              defaultCurrent={1}
+              total={50}
+              onChange={handleOnPageChange}
+            />
           </PaginationWrapper>
         )}
         <Spin spinning={isFetching} />
